@@ -1,0 +1,136 @@
+/* ==========================================================
+   1. CHẾ ĐỘ XEM DI ĐỘNG (MOBILE FIRST - MẶC ĐỊNH)
+   ========================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #dedede;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 10px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 32px;
+}
+
+p {
+  font-size: 25px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+}
+
+/* Cấu hình Lưới 1 cột với khoảng cách 10px */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+figure {
+  margin: 0;
+  background-color: #ffffff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+figcaption {
+  margin-top: 8px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px 0;
+}
+
+
+/* ==========================================================
+   2. CHẾ ĐỘ XEM MÁY TÍNH BẢNG (TABLET - 772PX)
+   ========================================================== */
+
+@media (min-width: 772px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Bo tròn các thẻ figure */
+  figure {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  /* Thẻ figure cuối cùng chiếm cả 2 cột */
+  figure:last-child {
+    grid-column: span 2;
+  }
+}
+
+
+/* ==========================================================
+   3. CHẾ ĐỘ XEM MÀN HÌNH LỚN (DESKTOP - 992PX)
+   ========================================================== */
+
+@media (min-width: 992px) {
+  /* Mỗi figure thứ 3 (index 3, 6, 9,...) chiếm cả 2 cột */
+  figure:nth-child(3n) {
+    grid-column: span 2;
+  }
+
+  /* Xóa bỏ định dạng chiếm cả 2 cột của phần tử cuối ở màn hình máy tính bảng (nếu không phải bội số của 3) */
+  figure:last-child {
+    grid-column: auto;
+  }
+  
+  figure:nth-child(3n):last-child {
+    grid-column: span 2;
+  }
+
+  /* Xóa bán kính đường viền khỏi tất cả các hình */
+  figure {
+    border-radius: 0;
+  }
+}
+
+
+/* ==========================================================
+   4. GIẢM CHUYỂN ĐỘNG ƯA THÍCH (PREFERS-REDUCED-MOTION)
+   ========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+
+/* ==========================================================
+   5. CHẾ ĐỘ TỐI (PREFERS-COLOR-SCHEME: DARK)
+   ========================================================== */
+
+@media (prefers-color-scheme: dark) {
+  figure {
+    background-color: #222222; /* Màu nền tối */
+    color: #ffff00;             /* Màu phông chữ nhạt hơn (màu vàng) */
+    border-color: #000000;      /* Màu viền đen */
+  }
+}
+
+
